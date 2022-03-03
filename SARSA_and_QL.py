@@ -405,3 +405,17 @@ for a in [0.01, 0.1, 0.9]:
     plt.ylabel('reward')
     plt.xlabel('episodes')
 plt.legend(['alpha = 0.01', 'alpha = 0.1', 'alpha = 0.9'], loc='lower right')
+
+
+plt.clf()
+for a in [0.1, 0.5, 0.9]:
+    epsilon = a 
+    s_agent = Agent_SARSA(0.2, epsilon)  
+    #s_agent.eps = epsilon              
+    rt_s, r_s, _ = s_agent.train()
+    smooth_rewards = smooth(r_s, 0.9)
+    plt.plot(smooth_rewards)
+    plt.title("SARSA Episodic rewards for different Epsilons")
+    plt.ylabel('reward')
+    plt.xlabel('episodes')
+plt.legend(['epsilon = 0.9', 'epsilon = 0.5', 'epsilon = 0.1'], loc='bottom right')
