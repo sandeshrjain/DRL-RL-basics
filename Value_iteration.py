@@ -28,7 +28,8 @@ def value_iteration(env, gamma = 1.0):
     Returns: 
 - value_table: state value function 
 - Q_value: state-action value function (Q function) 
-. 
+- policy: Extracted policy
+- value_history: Extracted Value history over iterations
     """ 
     value_history = np.zeros((max_val, env.observation_space.n))
     value_table_old = np.zeros((env.observation_space.n,1))
@@ -91,9 +92,7 @@ pi = extract_policy(v, gamma)
     
     
 
-    
-#pretty_print()    
-    
+        
 import matplotlib.pyplot as plt
 
 plt.plot(vh, label=['v0', 'v1', 'v2'])
